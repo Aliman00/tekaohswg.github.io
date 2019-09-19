@@ -18,8 +18,12 @@ body {
 
 header {
   height: 150px;
+  h1{
+    font-size: 38px;
+  }
   p{
-    width: 500px;
+    width: 700px;
+    font-size: 17px;
   }
 }
 
@@ -32,4 +36,8 @@ img.bothan {
   -o-border-radius: 8px;
   border-radius: 8px;
   margin-right: 20px;
+}
+
+a:hover{
+  color: #025;
 }
