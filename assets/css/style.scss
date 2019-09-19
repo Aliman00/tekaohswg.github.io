@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 body {
-  background: inline-image("./images/checker.png") fixed;
+  background: url("../images/checker.png") fixed;
 }
 
 .wrapper {
