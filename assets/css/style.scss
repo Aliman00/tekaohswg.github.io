@@ -1,0 +1,12 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+  background: inline-image("./images/checker.png") fixed;
+}
+
+.wrapper {
+  width: 740px;
+}
