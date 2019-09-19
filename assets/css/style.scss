@@ -3,8 +3,13 @@
 
 @import "{{ site.theme }}";
 
+html {
+  height: 100%;
+}
+
 body {
   background: url("../images/checker.png") fixed;
+  min-height: calc(100% - 100px);
 }
 
 .wrapper {
