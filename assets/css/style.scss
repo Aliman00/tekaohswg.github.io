@@ -25,6 +25,13 @@ header {
     width: 700px;
     font-size: 17px;
   }
+  ul {
+    a:hover {
+      strong {
+        color: #025;
+      }
+    }
+  }
 }
 
 img.bothan {
