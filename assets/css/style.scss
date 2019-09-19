@@ -15,3 +15,21 @@ body {
 .wrapper {
   width: 740px;
 }
+
+header {
+  height: 150px;
+  p{
+    width: 500px;
+  }
+}
+
+img.bothan {
+  height: 150px;
+  float: left;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
