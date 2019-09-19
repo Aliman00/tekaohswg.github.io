@@ -37,4 +37,10 @@ Before booting it up, we'll need to change a few more options. With your VM sele
 
 That's it for settings! Click `OK` to close the window.
 
-With your VM still selected, click the big green arrow that says `Start`.
+With your VM still selected, click the big green arrow that says `Start`. The VM will boot and bring you to Xubuntu's installer. Choose `Install Xubuntu` to continue. The default keyboard layout is fine, so press `Continue`. On the next page, select both checkboxes and click `Continue`. On the next page, the default selection should be `Erase disk and install Xubuntu`. This is good, so click `Install Now`. A confirmation window will appear, so click `Continue`. The `Where are you` screen will try to guess at where you are. If it's wrong, make a new selection manually. This is for localization settings. When you're ready, click `Continue`. Next is the `Who are you` screen. Input `swg` for everything and select `Log in automatically`. Click `Continue`.
+
+![](assets/images/new/003.PNG)
+
+The installer will run for a while now and you definitely don't want to skip anything, so feel free to go make a sandwich or something. When it's done, it'll ask you to restart. Go ahead and click `Restart Now`. It'll ask you to remove the installation media then press ENTER. VirtualBox actually removes the installation media automatically, so just go ahead and press ENTER. After it finishes rebooting, you should arrive at your desktop. After a moment, a window should appear that offers to install updates for you. This is good, so click `Install Now` and let it run. When it's done, press `OK`.
+
+Before we start installing server software, we want to prevent the OS from locking up or turning off automatically. Go to `Start -> Settings -> Power Manager`. Click the `Display` tab, move all the sliders to `Never`, and then just turn off `Display power management`. Click `Close` when you're done.
