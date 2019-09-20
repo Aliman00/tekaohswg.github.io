@@ -44,3 +44,14 @@ With your VM still selected, click the big green arrow that says `Start`. The VM
 The installer will run for a while now and you definitely don't want to skip anything, so feel free to go make a sandwich or something. When it's done, it'll ask you to restart. Go ahead and click `Restart Now`. It'll ask you to remove the installation media then press ENTER. VirtualBox actually removes the installation media automatically, so just go ahead and press ENTER. After it finishes rebooting, you should arrive at your desktop. After a moment, a window should appear that offers to install updates for you. This is good, so click `Install Now` and let it run. When it's done, press `OK`.
 
 Before we start installing server software, we want to prevent the OS from locking up or turning off automatically. Go to `Start -> Settings -> Power Manager`. Click the `Display` tab, move all the sliders to `Never`, and then just turn off `Display power management`. Click `Close` when you're done.
+
+![](assets/images/new/004.PNG)
+
+We also want to install VirtualBox Guest Additions. In the VM window, select `Devices -> Insert Guest Additions CD image..`. The CD will be mounted and a file explorer should open automatically. In the file explorer, click `File -> Open Terminal Here`. At the command line, run the following commands: (Note: The sudo password is `swg`) (Also note: Answer `yes` when `m-a prepare` asks for permission)
+```
+sudo apt install module-assistant
+sudo m-a prepare
+sudo sh ./VBoxLinuxAdditions.run
+```
+
+When the script finishes, close the terminal and file explorer. Eject the Guest Additions CD by right clicking its icon on the desktop and selecting `Eject Volume`. You should now reboot the VM by clicking the power icon in the start menu and selecting `Restart`. When the VM finishes rebooting, you will be able to maximize the VM window and the desktop will resize automatically.
