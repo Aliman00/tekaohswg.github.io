@@ -10,7 +10,7 @@ This guide will help you build a new SWG Server VM from scratch. I recommend fol
 
 You need to have [Oracle VirtualBox](https://www.virtualbox.org/) installed on your host machine before you begin.
 
-You should also download the latest installation media for Xubuntu 18.04 from [here](http://mirror.us.leaseweb.net/ubuntu-cdimage/xubuntu/releases/18.04/release/) (`amd64.iso` is the one you want). This guide uses Xubuntu because I like it. Ubuntu is popular and makes some things a little easier to get running compared to Debian. And I prefer Xfce.
+You should also download the latest installation media for Xubuntu 18.04 from [here](http://mirror.us.leaseweb.net/ubuntu-cdimage/xubuntu/releases/18.04/release/) (`amd64.iso` is the one you want). This guide uses Xubuntu because I like it. Ubuntu is popular and I prefer Xfce.
 
 ### Prepare your VM for installation
 
@@ -37,7 +37,7 @@ Before booting it up, we'll need to change a few more options. With your VM sele
 
 That's it for settings! Click `OK` to close the window.
 
-With your VM still selected, click the big green arrow that says `Start`. The VM will boot and bring you to Xubuntu's installer. Choose `Install Xubuntu` to continue. The default keyboard layout is fine, so press `Continue`. On the next page, select both checkboxes and click `Continue`. On the next page, the default selection should be `Erase disk and install Xubuntu`. This is good, so click `Install Now`. A confirmation window will appear, so click `Continue`. The `Where are you` screen will try to guess at where you are. If it's wrong, make a new selection manually. This is for localization settings. When you're ready, click `Continue`. Next is the `Who are you` screen. Input `swg` for everything and select `Log in automatically`. Click `Continue`.
+With your VM still selected, click the big green arrow that says `Start`. The VM will boot and bring you to Xubuntu's installer. Choose `Install Xubuntu` to continue. The default keyboard layout is fine, so press `Continue`. On the next page, select both checkboxes and click `Continue`. On the next page, the default selection should be `Erase disk and install Xubuntu`. This is good, so click `Install Now`. A confirmation window will appear, so click `Continue`. The `Where are you` screen will try to guess at where you are. If it's wrong, make a new selection manually. This is for localization settings, time zone, etc. When you're ready, click `Continue`. Next is the `Who are you` screen. Input `swg` for everything and select `Log in automatically`. Click `Continue`.
 
 ![](assets/images/new/003.PNG)
 
@@ -47,11 +47,18 @@ Before we start installing server software, we want to prevent the OS from locki
 
 ![](assets/images/new/004.PNG)
 
-We also want to install VirtualBox Guest Additions. In the VM window, select `Devices -> Insert Guest Additions CD image..`. The CD will be mounted and a file explorer should open automatically. In the file explorer, click `File -> Open Terminal Here`. At the command line, run the following commands: (Note: The sudo password is `swg`) (Also note: Answer `yes` when `m-a prepare` asks for permission)
+We also want to install VirtualBox Guest Additions. In the VM window, select `Devices -> Insert Guest Additions CD image..`. The CD will be mounted and a file explorer should open automatically. In the file explorer, click `File -> Open Terminal Here`. At the command line, run the following commands: (Note: The sudo password is `swg`)
 ```
-sudo apt install module-assistant
-sudo m-a prepare
-sudo sh ./VBoxLinuxAdditions.run
+sudo apt install build-essential dkms linux-headers-generic -y
+sudo ./VBoxLinuxAdditions.run
 ```
 
-When the script finishes, close the terminal and file explorer. Eject the Guest Additions CD by right clicking its icon on the desktop and selecting `Eject Volume`. You should now reboot the VM by clicking the power icon in the start menu and selecting `Restart`. When the VM finishes rebooting, you will be able to maximize the VM window and the desktop will resize automatically.
+When the script finishes, close the terminal and file explorer. Eject the Guest Additions CD by right clicking its icon on the desktop and selecting `Eject Volume`. You will now be able to maximize the VM window and the desktop will resize automatically. You should now reboot the VM by clicking the power icon in the start menu and selecting `Restart`.
+
+>Check the clock on your Xubuntu desktop. If installing Guest Additions makes your clock incorrect, you shouldn't continue. The script that comes in the next step needs your clock to be cooperating. I had an issue while writing this guide where I had daylight savings set incorrectly on my host and then my time set manually for some reason. VirtualBox didn't like that at all. Anyways, just make sure your clock isn't screwed up. Hopefully it works for you without any hassle.
+
+Let's next install Oracle Database 18.
+
+wget https://raw.githubusercontent.com/tekaohswg/oinit/master/oinit.sh
+chmod +x oinit.sh
+sudo ./oinit.sh
