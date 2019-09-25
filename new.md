@@ -206,4 +206,4 @@ When you click `Next`, you'll get a warning that your password kind of sucks. Th
 
 On the next page, the default checkbox is `Create database`. That's good, so click `Next`.
 
-Finally, you'll get your confirmation summary. Everything should be good, so click `Finish` to let the application create your database. This will take quite a while. You'll probably think it's stuck. It's not. Just give it time.
+Finally, you'll get your confirmation summary. Everything should be good, so click `Finish` to let the application create your database. This will take quite a while. You'll probably think it's stuck. It's not. Just give it time. When it's finally done, click `Close`.
