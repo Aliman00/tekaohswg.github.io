@@ -207,3 +207,14 @@ When you click `Next`, you'll get a warning that your password kind of sucks. Th
 On the next page, the default checkbox is `Create database`. That's good, so click `Next`.
 
 Finally, you'll get your confirmation summary. Everything should be good, so click `Finish` to let the application create your database. This will take quite a while. You'll probably think it's stuck. It's not. Just give it time. When it's finally done, click `Close`.
+
+You can finally close the terminal window you've been using for the Oracle installation.
+
+After setting up the database, it will already be running in the background. However, we'll also want Oracle Database to load automatically whenever the VM is booted up. We can make that happen by starting a fresh terminal and running the following commands:
+```
+wget https://raw.githubusercontent.com/tekaohswg/oinit/master/install-service.sh
+chmod +x install-service.sh
+sudo ./install-service.sh
+```
+
+We are finally ready to install Star Wars Galaxies!
