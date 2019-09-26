@@ -58,6 +58,7 @@ Before we start installing server software, we want to prevent the OS from locki
 ![](assets/images/new/004.PNG)
 
 We also want to install VirtualBox Guest Additions. In the VM window, select `Devices -> Insert Guest Additions CD image..`. The CD will be mounted and a file explorer should open automatically. In the file explorer, click `File -> Open Terminal Here`. At the command line, run the following commands: (Note: The sudo password is `swg`)
+
 ```
 sudo apt install build-essential dkms linux-headers-generic -y
 sudo ./VBoxLinuxAdditions.run
@@ -68,9 +69,11 @@ When the script finishes, close the terminal and file explorer. Eject the Guest 
 >Check the clock on your Xubuntu desktop. If installing Guest Additions makes your clock incorrect, you shouldn't continue. The script that comes in the next step needs your clock to be cooperating. I had an issue while writing this guide where I had daylight savings set incorrectly on my host and then my time set manually for some reason. VirtualBox didn't like that at all. Anyways, just make sure your clock isn't screwed up. Hopefully it works for you without any hassle.
 
 After rebooting, we want our server to have a static IP address. First, it's helpful to know what our current IP address is. Open a terminal and run this command:
+
 ```
 ifconfig
 ```
+
 You'll get an output that looks like this. Pay attention to the numbers that correspond with the ones circled in red. Yours will be different. Once you've noted this IP address, you may close the terminal.
 
 ![](assets/images/new/018.PNG)
@@ -84,6 +87,7 @@ Now, click the network icon again and select `Disconnect`. Then click the icon a
 >As a sanity check, you can open a terminal and rerun the `ifconfig` command from earlier. You should see your new IP address in the place of your old one.
 
 We should now add our static IP address to the hosts file. Open a terminal and enter this command:
+
 ```
 sudo nano /etc/hosts
 ```
@@ -95,6 +99,7 @@ Remove `127.0.1.1` from the second line and replace it with your static IP Addre
 Press `CTRL + X` to exit. At the prompt, press `y` to indicate that you want to save, and press enter to accept the same filename.
 
 Let's next install Oracle Database 18. The following commands will run a script to get the system ready for installation, including downloading the software. This may take a while depending on your internet connection.
+
 ```
 wget https://raw.githubusercontent.com/tekaohswg/oinit/master/oinit.sh
 chmod +x oinit.sh
@@ -102,6 +107,7 @@ sudo ./oinit.sh
 ```
 
 Once the script has finished, we're ready to run the actual installer. (Note: When you're prompted for it, the password for oracle is `swg`.)
+
 ```
 xhost +
 su - oracle
@@ -140,6 +146,7 @@ The second one will ask for input twice. Just press `Enter` both times to keep t
 ![](assets/images/new/008.PNG)
 
 Back to the first terminal that has been open this whole time, run the following commands to run a post-install script. This is needed before trying to create our database.
+
 ```
 wget https://raw.githubusercontent.com/tekaohswg/oinit/master/postinst.sh
 chmod +x postinst.sh
@@ -211,10 +218,50 @@ Finally, you'll get your confirmation summary. Everything should be good, so cli
 You can finally close the terminal window you've been using for the Oracle installation.
 
 After setting up the database, it will already be running in the background. However, we'll also want Oracle Database to load automatically whenever the VM is booted up. We can make that happen by starting a fresh terminal and running the following commands:
+
 ```
 wget https://raw.githubusercontent.com/tekaohswg/oinit/master/install-service.sh
 chmod +x install-service.sh
 sudo ./install-service.sh
 ```
+
+The last thing we have to do with Oracle is prepare it to be accessible by the SWG server. In a terminal, run the following commands to download a file we're going to need and then to open SQL Developer.:
+
+```
+wget https://raw.githubusercontent.com/tekaohswg/oinit/master/swgusr.sql
+/u01/app/oracle/product/18/dbhome_1/sqldeveloper/sqldeveloper.sh
+```
+
+As SQL Developer loads, it will ask you if you want to import your preferences. Click `No`. After loading some more, it will ask you about reporting your usage to Oracle. Uncheck the box to opt out and click `OK`.
+
+We want to add some new connections. Click the green plus icon on the left-hand side under `Connections`. First, enter these inputs and click `Save`.
+
+```
+Connection name: system@swg
+Username: system
+Password: swg
+[x] Save Password
+SID: swg
+```
+
+![](assets/images/new/012.PNG)
+
+Create another connection with these inputs and click save again: (You won't actually use this connection as part of the tutorial, but you might find it nice to have later.)
+
+```
+Connection name: swg@swg
+Username: swg
+Password: swg
+[x] Save Password
+SID: swg
+```
+
+![](assets/images/new/020.PNG)
+
+With both these connections created, close this window. Your two new connections will now appear on the list on the left-hand side. Double-click on `system@swg` to connect as `system`. Then, click on `File -> Open...` and in the file explorer, click `Home` and open the file `swgusr.sql` that you downloaded earlier. This will load a series of SQL statements into SQL Developer. Press `F5` to run the script, and click `OK` on the confirmation window to confirm that you want to use the `system@swg` connection.
+
+![](assets/images/new/021.PNG)
+
+After a moment, the script will be completed. You can now close SQL Developer.
 
 We are finally ready to install Star Wars Galaxies!
