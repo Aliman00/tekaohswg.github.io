@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+(This guide is still sort of a work in progress. I'd call it an alpha at this point. It should be entirely functional, but I'm still polishing it up. Just keep that in mind...)
 
 ## Build a New SWG Server
 
