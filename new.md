@@ -265,7 +265,7 @@ With both these connections created, close this window. Your two new connections
 
 After a moment, the script will be completed. You can now close SQL Developer.
 
-We are finally ready to install Star Wars Galaxies! Thankfully, this process can be much more automated that the Oracle install. You can get going with just a few commands:
+We are finally ready to install Star Wars Galaxies! Thankfully, this process can be much more automated than the Oracle install. You can get going with just a few commands:
 
 ```
 sudo apt install git -y
