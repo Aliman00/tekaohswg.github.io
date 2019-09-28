@@ -48,3 +48,17 @@ img.bothan {
 a:hover{
   color: #025;
 }
+
+@media print, screen and (max-width: 740px){
+  body {
+    min-height: 100%
+  }
+  .wrapper {
+    width: 100%
+  }
+  header{
+    p{
+      width: 100%
+    }
+  }
+}
