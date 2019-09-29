@@ -265,7 +265,9 @@ With both these connections created, close this window. Your two new connections
 
 After a moment, the script will be completed. You can now close SQL Developer.
 
-We are finally ready to install Star Wars Galaxies! Thankfully, this process can be much more automated than the Oracle install. You can get going with just a few commands:
+Check back soon for instructions to install SWG! (Or just go ahead if you already know how)
+
+<!-- We are finally ready to install Star Wars Galaxies! Thankfully, this process can be much more automated than the Oracle install. You can get going with just a few commands:
 
 ```
 sudo apt install git -y
@@ -274,4 +276,4 @@ cd swg
 include/install.sh
 ```
 
-The install script will need a little bit of user input to get started. Just enter your IP address and press `Enter`. Then enter a name for your galaxy and press `Enter` again. If the script asks for a sudo password, enter that as well. If might not even ask if you already used the sudo password recently. Once the script is done asking questions, it will download everything you need and compile the source code into a working SWG server. This will probably take a good long time, so feel free to go out for supper or something and come back later.
+The install script will need a little bit of user input to get started. Just enter your IP address and press `Enter`. Then enter a name for your galaxy and press `Enter` again. If the script asks for a sudo password, enter that as well. If might not even ask if you already used the sudo password recently. Once the script is done asking questions, it will download everything you need and compile the source code into a working SWG server. This will probably take a good long time, so feel free to go out for supper or something and come back later. -->
