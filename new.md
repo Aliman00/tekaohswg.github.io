@@ -267,13 +267,29 @@ After a moment, the script will be completed. You can now close SQL Developer.
 
 Check back soon for instructions to install SWG! (Or just go ahead if you already know how)
 
-<!-- We are finally ready to install Star Wars Galaxies! Thankfully, this process can be much more automated than the Oracle install. You can get going with just a few commands:
+We are finally ready to install Star Wars Galaxies! Go ahead and install your favorite SWG platform, if you have one, or keep reading to install the Tekaoh SWG platform.
 
 ```
 sudo apt install git -y
 git clone https://github.com/tekaohswg/swg.git
 cd swg
-include/install.sh
+./swgtool.sh install
 ```
 
-The install script will need a little bit of user input to get started. Just enter your IP address and press `Enter`. Then enter a name for your galaxy and press `Enter` again. If the script asks for a sudo password, enter that as well. If might not even ask if you already used the sudo password recently. Once the script is done asking questions, it will download everything you need and compile the source code into a working SWG server. This will probably take a good long time, so feel free to go out for supper or something and come back later. -->
+The install script will need a little bit of user input to get started. Just enter your IP address and press `Enter`. Then enter a name for your galaxy and press `Enter` again. If the script asks for a sudo password, enter that as well. Once the script is done asking these questions, it will download everything you need and compile the source code. This will probably take a good long time.
+
+After the compile stage, the script might ask for the sudo password again before building the chat server. It will also ask for input again when it wants to build the database. Use the following replies:
+```
+Enter value for max_characters_per_account: 10
+Enter value for max_characters_per_cluster: 10
+Enter value for character_slots: 10
+Enter value for cluster_name: (Use whatever you named your cluster at the beginning of the installation.)
+Enter value for host: 127.0.0.1
+```
+
+After the install script finally finishes, you can start your SWG server:
+```
+./swgtool.sh start
+```
+
+That's it! Congratulations on building your SWG server from scratch! I knew you could do it.
