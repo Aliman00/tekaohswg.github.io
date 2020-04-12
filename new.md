@@ -97,12 +97,22 @@ Remove `127.0.1.1` from the second line and replace it with your static IP Addre
 
 Press `CTRL + X` to exit. At the prompt, press `y` to indicate that you want to save, and press enter to accept the same filename.
 
-Let's next install Oracle Database 18. The following commands will run a script to get the system ready for installation, including downloading the software. This may take a while depending on your internet connection.
+Now, we can install git using this command:
 
 ```
-wget https://raw.githubusercontent.com/tekaohswg/oinit/master/oinit.sh
-chmod +x oinit.sh
-sudo ./oinit.sh
+sudo apt install git -y
+```
+
+Next, we want to download the swg-prepare repository. This repository contains everything you need to get your system ready, including the Oracle Database software. This may take a little while depending on your internet connection.
+
+```
+git clone https://github.com/tekaohswg/swg-prepare.git ~/swg-prepare
+```
+
+Let's install Oracle Database 18. This command will run a script to get the system ready for installation.
+
+```
+sudo ~/swg-prepare/oinit.sh
 ```
 
 Once the script has finished, we're ready to run the actual installer. (Note: When you're prompted for it, the password for oracle is `swg`.)
@@ -144,12 +154,10 @@ The second one will ask for input twice. Just press `Enter` both times to keep t
 
 ![](assets/images/new/008.PNG)
 
-Back to the first terminal that has been open this whole time, run the following commands to run a post-install script. This is needed before trying to create our database.
+Back to the first terminal that has been open this whole time, run the following command to run another script. This is needed before trying to create our database.
 
 ```
-wget https://raw.githubusercontent.com/tekaohswg/oinit/master/postinst.sh
-chmod +x postinst.sh
-./postinst.sh
+/home/swg/swg-prepare/orelink.sh
 ```
 
 Still in the same terminal, use this command to launch the Oracle Net Configuration Assistant.
@@ -212,22 +220,19 @@ When you click `Next`, you'll get a warning that your password kind of sucks. Th
 
 On the next page, the default checkbox is `Create database`. That's good, so click `Next`.
 
-Finally, you'll get your confirmation summary. Everything should be good, so click `Finish` to let the application create your database. This will take quite a while. You'll probably think it's stuck. It's not. Just give it time. When it's finally done, click `Close`.
+Finally, you'll get your confirmation summary. Everything should be good, so click `Finish` to let the application create your database. This will take quite a while. You'll probably think it's stuck. It's not. Just give it lots of time. When it's finally done, click `Close`.
 
 You can finally close the terminal window you've been using for the Oracle installation.
 
-After setting up the database, it will already be running in the background. However, we'll also want Oracle Database to load automatically whenever the VM is booted up. We can make that happen by starting a fresh terminal and running the following commands:
+After setting up the database, it will already be running in the background. However, we'll also want Oracle Database to load automatically whenever the VM is booted up. We can make that happen by starting a fresh terminal and running the following command:
 
 ```
-wget https://raw.githubusercontent.com/tekaohswg/oinit/master/install-service.sh
-chmod +x install-service.sh
-sudo ./install-service.sh
+sudo ~/swg-prepare/oservice.sh
 ```
 
-The last thing we have to do with Oracle is prepare it to be accessible by the SWG server. In a terminal, run the following commands to download a file we're going to need and then to open SQL Developer.:
+The last thing we have to do with Oracle is prepare it to be accessible by the SWG server. In a terminal, run the following command to open SQL Developer:
 
 ```
-wget https://raw.githubusercontent.com/tekaohswg/oinit/master/swgusr.sql
 /u01/app/oracle/product/18/dbhome_1/sqldeveloper/sqldeveloper.sh
 ```
 
@@ -257,7 +262,7 @@ SID: swg
 
 ![](assets/images/new/020.PNG)
 
-With both these connections created, close this window. Your two new connections will now appear on the list on the left-hand side. Double-click on `system@swg` to connect as `system`. Then, click on `File -> Open...` and in the file explorer, click `Home` and open the file `swgusr.sql` that you downloaded earlier. This will load a series of SQL statements into SQL Developer. Press `F5` to run the script, and click `OK` on the confirmation window to confirm that you want to use the `system@swg` connection.
+With both these connections created, close this window. Your two new connections will now appear on the list on the left-hand side. Double-click on `system@swg` to connect as `system`. Then, click on `File -> Open...` and in the file explorer, open the file `/home/swg/swg-prepare/swgusr.sql`. This will load a series of SQL statements into SQL Developer. Press `F5` to run the script, and click `OK` on the confirmation window to confirm that you want to use the `system@swg` connection.
 
 ![](assets/images/new/021.PNG)
 
@@ -265,7 +270,7 @@ After a moment, the script will be completed. You can now close SQL Developer.
 
 Check back soon for instructions to install SWG! (Or just go ahead if you already know how)
 
-We are finally ready to install Star Wars Galaxies! Go ahead and install your favorite SWG platform, if you have one, or keep reading to install the Tekaoh SWG platform.
+<!-- We are finally ready to install Star Wars Galaxies! Go ahead and install your favorite SWG platform, if you have one, or keep reading to install the Tekaoh SWG platform.
 
 ```
 sudo apt install git -y
@@ -290,4 +295,4 @@ After the install script finally finishes, you can start your SWG server:
 ./swgtool.sh start
 ```
 
-That's it! Congratulations on building your SWG server from scratch! I knew you could do it.
+That's it! Congratulations on building your SWG server from scratch! I knew you could do it. -->
