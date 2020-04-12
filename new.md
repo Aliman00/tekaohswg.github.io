@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-(This guide is still sort of a work in progress. I'd call it a beta at this point. It should be entirely functional, but I'm still polishing it up. Just keep that in mind...)
 
 ## Build a New SWG Server
 
@@ -11,7 +10,7 @@ This guide will help you build a new SWG Server VM from scratch. I recommend fol
 
 You need to have [Oracle VirtualBox](https://www.virtualbox.org/) installed on your host machine before you begin.
 
-You should also download the latest installation media for Xubuntu 18.04 from [here](http://mirror.us.leaseweb.net/ubuntu-cdimage/xubuntu/releases/18.04/release/) (`amd64.iso` is the one you want). This guide uses Xubuntu because I like it. Ubuntu is popular and I prefer Xfce.
+You should also download the installation media for Linux Mint 19.3 from [here](https://www.linuxmint.com/edition.php?id=278). This guide uses Linux Mint Xfce because I like it.
 
 ### Prepare your VM for installation
 
@@ -19,7 +18,7 @@ In VirtualBox, Select `Machine -> New...`. You will be prompted with a window to
 
 ![](assets/images/new/001.PNG)
 
->A note on memory size: To run the _entire_ game, you will need at least 16 GB of RAM in your VM. If you don't have that much, just choose an amount as high as you can go while still leaving enough for the host to be comfortable running a SWG client. In this example, my host has only 12 GB of RAM, so I will give 8G B to the VM and keep 4 GB for the host. Individual mileage may vary.
+>A note on memory size: To run the _entire_ game, you will need at least 16 GB of RAM in your VM. If you don't have that much, just choose an amount as high as you can go while still leaving enough for the host to be comfortable running a SWG client. In this example, my host has only 12 GB of RAM, so I will give 8 GB to the VM and keep 4 GB for the host. Individual mileage may vary.
 
 After clicking `Create`, you will get a window asking you for details about your Virtual Hard Disk. Defaults should be fine, except that you'll want to give your VM more than the default 10 GB of disk space. 100 GB should be plenty, and as long as you've got dynamic allocation selected, you don't even loose that space until you actually need to use it.
 
@@ -31,14 +30,13 @@ Before booting it up, we'll need to change a few more options. With your VM sele
 
 + For `System -> Processor -> Processor(s)`, give the VM pretty much as many CPUs as you can without bringing the slider into the red.
 + For `Display -> Screen -> Video Memory`, bring the slider all the way to 128 MB.
-+ For `Display -> Screen -> Acceleration`, check `Enable 3D Acceleration`.
-+ Select `Storage -> Storage Devices -> Controller: IDE -> Empty`. Select the Disk icon to the right of the dropdown menu under `Attributes -> Optical Drive`, select `Choose Virtual Optical Disk File...` and navigate to and open the Xubuntu iso file you downloaded earlier.
++ Select `Storage -> Storage Devices -> Controller: IDE -> Empty`. Select the Disk icon to the right of the dropdown menu under `Attributes -> Optical Drive`, select `Choose Virtual Optical Disk File...` and navigate to and open the Linux Mint Xfce iso file you downloaded earlier.
 + (Optional:) If you are running your VM from a solid-state drive, click on your vdi under `Storage Devices` and select the `Solid-state Drive` checkbox under `Attributes`.
 + For `Network -> Adapter 1 -> Attached to:`, select `Bridged Adapter`.
 
 That's it for settings! Click `OK` to close the window.
 
-With your VM still selected, click the big green arrow that says `Start`. The VM will boot and bring you to Xubuntu's installer. Choose `Install Xubuntu` to continue.
+With your VM still selected, click the big green arrow that says `Start`. The VM will boot and bring you to Linux Mint's desktop. Double click the `Install Linux Mint` icon to begin the installation.
 
 The default keyboard layout is fine, so press `Continue`.
 
