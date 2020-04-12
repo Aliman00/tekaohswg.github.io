@@ -268,31 +268,30 @@ With both these connections created, close this window. Your two new connections
 
 After a moment, the script will be completed. You can now close SQL Developer.
 
-Check back soon for instructions to install SWG! (Or just go ahead if you already know how)
-
-<!-- We are finally ready to install Star Wars Galaxies! Go ahead and install your favorite SWG platform, if you have one, or keep reading to install the Tekaoh SWG platform.
+Let's run a few commands to get your system ready to install SWG.
 
 ```
-sudo apt install git -y
-git clone https://github.com/tekaohswg/swg.git
-cd swg
-./swgtool.sh install
+sudo ~/swg-prepare/swginit.sh
+source /etc/profile.d/oracle.sh
+source /etc/profile.d/java.sh
 ```
 
-The install script will need a little bit of user input to get started. Just enter your IP address and press `Enter`. Then enter a name for your galaxy and press `Enter` again. If the script asks for a sudo password, enter that as well. Once the script is done asking these questions, it will download everything you need and compile the source code. This will probably take a good long time.
+Now we have to get the swg-main directory from SWG Source.
 
-After the compile stage, the script might ask for the sudo password again before building the chat server. It will also ask for input again when it wants to build the database. Use the following replies:
 ```
-Enter value for max_characters_per_account: 10
-Enter value for max_characters_per_cluster: 10
-Enter value for character_slots: 10
-Enter value for cluster_name: (Use whatever you named your cluster at the beginning of the installation.)
-Enter value for host: 127.0.0.1
+git clone https://github.com/SWG-Source/swg-main.git ~/swg-main
 ```
 
-After the install script finally finishes, you can start your SWG server:
+Enter the swg-main folder.
+
 ```
-./swgtool.sh start
+cd ~/swg-main
 ```
 
-That's it! Congratulations on building your SWG server from scratch! I knew you could do it. -->
+Finally, at long last, run the command to download and compile the SWG server. This may take a couple of hours, depending on your hardware.
+
+```
+ant swg
+```
+
+That's it! Congratulations on building your SWG server from scratch! I knew you could do it.
