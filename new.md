@@ -100,16 +100,16 @@ Press `CTRL + X` to exit. At the prompt, press `y` to indicate that you want to 
 Now, we can install git using this command:
 
 ```
-sudo apt install git git-lfs -y
+sudo apt install git -y
 ```
 
-Next, we want to download the swg-prepare repository. This repository contains everything you need to get your system ready, including the Oracle Database software. This may take a little while depending on your internet connection.
+Next, we want to download the swg-prepare repository. This repository contains stuff you need to get your system ready.
 
 ```
-git lfs clone https://github.com/tekaohswg/swg-prepare.git ~/swg-prepare
+git clone https://github.com/tekaohswg/swg-prepare.git ~/swg-prepare
 ```
 
-Let's install Oracle Database 18. This command will run a script to get the system ready for installation.
+Let's install Oracle Database 18. This command will run a script to get the system ready for installation, including downloading the Oracle Database software. This may take a little while depending on your internet connection.
 
 ```
 sudo ~/swg-prepare/oinit.sh
