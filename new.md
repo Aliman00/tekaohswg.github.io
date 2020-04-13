@@ -294,4 +294,20 @@ Finally, at long last, run the command to download and compile the SWG server. T
 ant swg
 ```
 
+One last thing. Before your server will start up, you need to edit lines 34 and 35 of `swg-main/exe/linux/servercommon.cfg`. Specifically, where it says this:
+
+```
+#These two lines are for VM 2.0. Comment them and uncomment the lines above to use a different platform.
+environmentVariable=PATH+=/usr/lib/jvm/java-11-openjdk/bin:./
+environmentVariable=LD_LIBRARY_PATH+=/usr/lib/jvm/java-11-openjdk/lib:/usr/lib/jvm/java-11-openjdk/lib/server:./
+```
+
+You need to change it to say this:
+
+```
+#These two lines are for VM 2.0. Comment them and uncomment the lines above to use a different platform.
+environmentVariable=PATH+=/usr/lib/jvm/java-11-openjdk-i386/bin:./
+environmentVariable=LD_LIBRARY_PATH+=/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/lib/jvm/java-11-openjdk-i386/lib/server:./
+```
+
 That's it! Congratulations on building your SWG server from scratch! I knew you could do it.
