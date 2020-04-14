@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<!-- TODO: Maybe I should add bash prompts to make it clear what user is active. I also also take Mint screenshots -->
+
 ## Build a New SWG Server
 
 This guide will help you build a new SWG Server VM from scratch. I recommend following this guide's every detail at least once before attempting to build a server with different settings or anything.
@@ -65,6 +67,7 @@ sudo ./VBoxLinuxAdditions.run
 When the script finishes, close the terminal. Eject the Guest Additions CD by clicking the eject button beside the disk name under `Devices` in the file explorer, then close file explorer. You will now be able to maximize the VM window and the desktop will resize automatically. You should now reboot the VM by clicking the power icon in the start menu and selecting `Restart`.
 
 <!-- TODO: If I stop using gdown.pl, I can remove this notice because the clock won't matter -->
+
 >Check the clock on your desktop. If installing Guest Additions makes your clock incorrect, you shouldn't continue. The script that comes in the next step needs your clock to be cooperating. I had an issue while writing this guide where I had daylight savings set incorrectly on my host and then my time set manually for some reason. VirtualBox didn't like that at all. Anyways, just make sure your clock isn't screwed up. Hopefully it works for you without any hassle.
 
 After rebooting, we want our server to have a static IP address. First, it's helpful to know what our current IP address is. Open a terminal and run this command:
@@ -110,6 +113,8 @@ git clone https://github.com/tekaohswg/swg-prepare.git ~/swg-prepare
 ```
 
 Let's install Oracle Database 18. This command will run a script to get the system ready for installation, including downloading the Oracle Database software. This may take a little while depending on your internet connection.
+
+<!-- TODO: My downloads took forever because I had to wait for the IPv6 connection to timeout before gdown used IPv4 -->
 
 ```
 sudo ~/swg-prepare/oinit.sh
@@ -200,6 +205,8 @@ The next four pages are fine, so click `Next` four more times.
 
 When you get to the page with several tabs, we'll change a few things again. First, in the `Memory` tab, set your `SGA Size` to `3072` and your `PGA Size` to `1024`.
 
+<!-- TODO: I'm also testing out 2048/768 for memory sizes -->
+
 ![](assets/images/new/013.PNG)
 
 In the `Character sets` tab, change the `National character set` to `UTF8`. That's it here, so click `Next`.
@@ -289,6 +296,8 @@ cd ~/swg-main
 ```
 
 Finally, at long last, run the command to download and compile the SWG server. This may take a couple of hours, depending on your hardware.
+
+<!-- TODO: My ant swg call often failed at add_new_cluster but it wouldn't always and calling that on its own worked fine. Weird -->
 
 ```
 ant swg
