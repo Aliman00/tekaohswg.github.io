@@ -322,3 +322,5 @@ environmentVariable=LD_LIBRARY_PATH+=/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/
 ```
 
 That's it! Congratulations on building your SWG server from scratch! I knew you could do it.
+
+If you want to keep going, you can try [setting up a website that integrates with SWG.](./web.html)
