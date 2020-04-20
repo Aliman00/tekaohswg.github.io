@@ -6,6 +6,8 @@ layout: default
 
 Now you can use Wordpress to manage your users for your SWG Server! Cool!
 
+### Features
+
 * Let your users register an account on your Wordpress website
 * Users can change their SWG password by changing their Wordpress password
 * Optionally require new users to be approved before being given access to the game
