@@ -56,6 +56,14 @@ To test your installation, navigate in your web browser to `http://your.ip.addre
 
 While you're here, select the Databases tab. Under Create database, enter the Database name `wordpress` and select the Collation `utf8mb4_general_ci`. Click Create.
 
+### Install PHP OCI8
+
+The WordPress Plugin I'll mention in the next step now requires OCI8 in order to talk to SWG's Oracle Database. If you followed my VM From Scratch guide, you should already have the swg-prepare repo cloned to your machine. If so, just run this script to get OCI8 installed for you:
+
+```
+sudo ~/swg-prepare/oci8.sh
+```
+
 ### Install Wordpress
 
 Wordpress is a pretty good content management system for building a website, and I also have a plugin for it that integrates it with a SWG Server. Install Wordpress like so:
